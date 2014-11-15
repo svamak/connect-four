@@ -68,4 +68,46 @@ class GridTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($expectedGrid, $grid->getRepresentation());
     }
+
+    /**
+     * Test if we make player ready representation
+     */
+    public function testPlayerRepresentation()
+    {
+        $grid = [
+            [0, 0, 0, Grid::DISK_PLAYER_1, Grid::DISK_PLAYER_1, Grid::DISK_PLAYER_2, 0],
+            [0, 0, 0, 0, Grid::DISK_PLAYER_2, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0]
+        ];
+        $grid = new Grid($grid);
+        $expected = [
+            [0, 0, 0, 1, 1, 2, 0],
+            [0, 0, 0, 0, 2, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0]
+        ];
+        $this->assertEquals($expected, $grid->getRepresentation(Grid::DISK_PLAYER_1));
+    }
+
+    /**
+     * Test if we are able to serialise grid
+     */
+    public function testJsonSerialise()
+    {
+        $raw = [
+            [0, 0, 0, Grid::DISK_PLAYER_1, Grid::DISK_PLAYER_1, Grid::DISK_PLAYER_2, 0],
+            [0, 0, 0, 0, Grid::DISK_PLAYER_2, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0]
+        ];
+        $grid = new Grid($raw);
+        $this->assertEquals(json_encode($raw), json_encode($grid));
+    }
 }

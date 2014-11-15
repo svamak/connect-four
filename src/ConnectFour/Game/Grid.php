@@ -3,6 +3,7 @@
 namespace ConnectFour\Game;
 
 use ConnectFour\Game\Grid\Column;
+use ConnectFour\Player\PlayerInterface;
 
 /**
  * This class represents game state
@@ -83,6 +84,16 @@ class Grid implements \JsonSerializable
     {
         $rows = [];
 
+        $callback = null;
+        if ($disk) {
+            $callback = function ($value) use ($disk) {
+                if ($value) {
+                    return $disk == $value ? PlayerInterface::DISK_LABEL_MINE : PlayerInterface::DISK_LABEL_OPPONENT;
+                }
+                return 0;
+            };
+        }
+
         for ($i = 0; $i < self::COUNT_ROW; $i++) {
             $row = [];
 
@@ -90,7 +101,7 @@ class Grid implements \JsonSerializable
                 $row[] = $column->get($i);
             }
 
-            $rows[] = $row;
+            $rows[] = $callback ? array_map($callback, $row) : $row;
         }
 
         return $rows;
@@ -101,6 +112,6 @@ class Grid implements \JsonSerializable
      */
     public function jsonSerialize()
     {
-        // TODO: Implement jsonSerialize() method.
+        return $this->getRepresentation();
     }
 }
