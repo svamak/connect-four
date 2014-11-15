@@ -3,6 +3,7 @@
 namespace ConnectFour\Game;
 
 use ConnectFour\Game\Grid\Column;
+use ConnectFour\Game\Grid\Helper;
 use ConnectFour\Player\PlayerInterface;
 
 /**
@@ -34,26 +35,8 @@ class Grid implements \JsonSerializable
     {
         $this->columns = [];
         for ($i = 0; $i < self::COUNT_COLUMN; $i++) {
-            $this->columns[] = new Column(($grid ? $this->getColumn($grid, $i) : []), self::COUNT_ROW);
+            $this->columns[] = new Column(($grid ? Helper::getColumn($grid, $i) : []), self::COUNT_ROW);
         }
-    }
-
-    /**
-     * Extract representation of column
-     *
-     * @param array $grid
-     * @param int $column
-     * @return array
-     */
-    private function getColumn($grid, $column)
-    {
-        $callback = function ($row) use ($column) {
-            return $row[$column];
-        };
-
-        return array_filter(
-            array_map($callback, $grid)
-        );
     }
 
     /**

@@ -28,7 +28,7 @@ interface PlayerInterface
      * </code>
      *
      * @param array $grid Grid representation in 7 columns, 6 rows array
-     * @return int 0 to 5 representation of column to drop disk
+     * @return int 0 to 6 index of column to drop disk
      */
     public function move($grid);
 }
