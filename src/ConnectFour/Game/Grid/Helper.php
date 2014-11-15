@@ -59,4 +59,33 @@ class Helper
 
         return $out;
     }
+
+    /**
+     * Get available columns to add disk
+     *
+     * @param array $grid
+     * @return array
+     */
+    public static function getAvailableColumns($grid)
+    {
+        $out = [];
+        for ($i = 0; $i < count($grid[0]); $i++) {
+            if (count(self::getColumn($grid, $i)) < count($grid)) {
+                $out[] = $i;
+            }
+        }
+
+        return $out;
+    }
+
+    /**
+     * Returns true if grid is full
+     *
+     * @param array $grid
+     * @return bool
+     */
+    public static function isFull($grid)
+    {
+        return count(self::getAvailableColumns($grid)) == 0;
+    }
 }

@@ -112,4 +112,82 @@ class HelperTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertEquals($expected, Helper::getDiagonally($grid, $start, $direction));
     }
+
+    /**
+     * @return array
+     */
+    public function getTestGetAvailableColumns()
+    {
+        $out = [];
+
+        $grid1 = [
+            [0, 0, 0, 1, 1, 2, 0],
+            [0, 0, 0, 1, 2, 0, 0],
+            [0, 0, 0, 1, 2, 0, 0],
+            [0, 0, 0, 2, 1, 0, 0],
+            [0, 0, 0, 1, 1, 0, 0],
+            [0, 0, 0, 0, 2, 0, 0]
+        ];
+
+        // case #0
+        $out[] = [
+            $grid1,
+            [0, 1, 2, 3, 5, 6]
+        ];
+
+        return $out;
+    }
+
+    /**
+     * Test if we are able to get available columns
+     *
+     * @dataProvider getTestGetAvailableColumns()
+     * @param array $grid
+     * @param array $expected
+     */
+    public function testGetAvailableColumns($grid, $expected)
+    {
+        $this->assertEquals($expected, Helper::getAvailableColumns($grid));
+    }
+
+    /**
+     * @return array
+     */
+    public function getTestIsFull()
+    {
+        $out = [];
+
+        // case #0
+        $out[] = [
+            [
+                [0, 0, 0, 1, 1, 2, 0],
+                [0, 0, 0, 1, 2, 0, 0],
+                [0, 0, 0, 1, 2, 0, 0],
+                [0, 0, 0, 2, 1, 0, 0],
+                [0, 0, 0, 1, 1, 0, 0],
+                [0, 0, 0, 0, 2, 0, 0]
+            ],
+            false
+        ];
+
+        // case #1
+        $out[] = [
+            array_fill(0, 6, array_fill(0, 7, 1)),
+            true
+        ];
+
+        return $out;
+    }
+
+    /**
+     * Test if we are able to get available columns
+     *
+     * @dataProvider getTestIsFull()
+     * @param array $grid
+     * @param bool $expected
+     */
+    public function testTestIsFull($grid, $expected)
+    {
+        $this->assertEquals($expected, Helper::isFull($grid));
+    }
 }
