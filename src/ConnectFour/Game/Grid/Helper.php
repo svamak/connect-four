@@ -36,4 +36,27 @@ class Helper
     {
         return $grid[$row];
     }
+
+    /**
+     * Return line in diagonally
+     *
+     * @param array $grid
+     * @param array $start starting point
+     * @param array $direction 1 or -1
+     * @return array
+     */
+    public static function getDiagonally($grid, $start, $direction)
+    {
+        $out = [];
+
+        $validate = function ($i, $j) use ($grid, $direction) {
+            return isset($grid[$i]) && isset($grid[$i][$j]);
+        };
+
+        for ($i = $start[0], $j = $start[1]; $validate($i, $j); $i += $direction[0], $j += $direction[1]) {
+            $out[] = $grid[$i][$j];
+        }
+
+        return $out;
+    }
 }

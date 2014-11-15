@@ -55,4 +55,61 @@ class HelperTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertEquals($expected, Helper::getRow($grid, $row));
     }
+
+    /**
+     * @return array
+     */
+    public function getTestGetDiagonally()
+    {
+        $out = [];
+
+        $grid1 = [
+            [0, 0, 0, 1, 1, 2, 0],
+            [0, 0, 0, 0, 2, 2, 0],
+            [0, 0, 0, 0, 1, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0]
+        ];
+
+        // case #0
+        $out[] = [
+            $grid1,
+            [0, 3],
+            [1, 1],
+            [1, 2, 0 ,0]
+        ];
+
+        // case #1
+        $out[] = [
+            $grid1,
+            [0, 5],
+            [1, -1],
+            [2, 2, 0 ,0, 0, 0]
+        ];
+
+        // case #2
+        $out[] = [
+            $grid1,
+            [0, 3],
+            [1, -1],
+            [1, 0, 0, 0]
+        ];
+
+        return $out;
+    }
+
+    /**
+     * Test if we are able to get diagonally line
+     *
+     * @dataProvider getTestGetDiagonally()
+     * @param array $grid
+     * @param array $start
+     * @param int $direction
+     * @param array $expected
+     */
+    public function testGetDiagonally($grid, $start, $direction, $expected)
+    {
+        $this->assertEquals($expected, Helper::getDiagonally($grid, $start, $direction));
+    }
 }
