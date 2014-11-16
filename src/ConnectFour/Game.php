@@ -66,7 +66,8 @@ class Game
      */
     public function play()
     {
-        for ($i = 0; $i < $this->grid->getMaxMoves(); $i+= 2) {
+        $maxMoves = $this->grid->getMaxMoves();
+        for ($i = 0; $i < $maxMoves; $i+= 2) {
             try {
                 $this->move();
             } catch (WinnerException $ex) {
