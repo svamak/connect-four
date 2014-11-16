@@ -21,7 +21,7 @@
     <filter>
         <blacklist>
             <exclude>
-                <directory suffix=".php">vendor</directory>
+                <directory suffix=".php">./vendor</directory>
             </exclude>
         </blacklist>
     </filter>
