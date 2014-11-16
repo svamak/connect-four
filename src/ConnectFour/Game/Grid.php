@@ -2,8 +2,10 @@
 
 namespace ConnectFour\Game;
 
+use ConnectFour\Game\Exception\EndGameException;
 use ConnectFour\Game\Grid\Column;
 use ConnectFour\Game\Grid\Helper;
+use ConnectFour\Game\Grid\Validator;
 use ConnectFour\Player\PlayerInterface;
 
 /**
@@ -44,6 +46,7 @@ class Grid implements \JsonSerializable
      *
      * @param string $disk Grid::DISK_PLAYER_1 or Grid::DISK_PLAYER_2
      * @param int $column Index of column
+     * @throws EndGameException
      */
     public function addDisk($disk, $column)
     {
@@ -55,6 +58,7 @@ class Grid implements \JsonSerializable
                 sprintf('Invalid column %d (%d columns grid)', $column, self::COUNT_COLUMN)
             );
         }
+        Validator::validate($this);
     }
 
     /**
@@ -96,5 +100,13 @@ class Grid implements \JsonSerializable
     public function jsonSerialize()
     {
         return $this->getRepresentation();
+    }
+
+    /**
+     * @return int Maximum moves count
+     */
+    public function getMaxMoves()
+    {
+        return self::COUNT_ROW * self::COUNT_COLUMN;
     }
 }

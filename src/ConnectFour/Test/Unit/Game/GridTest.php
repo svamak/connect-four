@@ -110,4 +110,13 @@ class GridTest extends \PHPUnit_Framework_TestCase
         $grid = new Grid($raw);
         $this->assertEquals(json_encode($raw), json_encode($grid));
     }
+
+    /**
+     * Moves count
+     */
+    public function testMovesCount()
+    {
+        $grid = new Grid();
+        $this->assertEquals(Grid::COUNT_COLUMN * Grid::COUNT_ROW, $grid->getMaxMoves());
+    }
 }
