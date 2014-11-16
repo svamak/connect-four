@@ -5,15 +5,15 @@ namespace ConnectFour\Test\Unit\Game;
 
 use ConnectFour\Game;
 use \Mockery as m;
-use ConnectFour\Game\Exception\WinnerException;
 
-class GameTest extends \PHPUnit_Framework_TestCase {
+class GameTest extends \PHPUnit_Framework_TestCase
+{
 
     public function testMoveIsMade()
     {
         $grid  = m::mock(
             'ConnectFour\Game\Grid[getRepresentation]',
-            function($grid) {
+            function ($grid) {
                 $grid->shouldReceive('getRepresentation')
                 ->andReturn(
                     [
@@ -28,17 +28,18 @@ class GameTest extends \PHPUnit_Framework_TestCase {
             }
         );
 
-        $player1  = m::mock(
+        $player1 = m::mock(
             'ConnectFour\Player\PlayerInterface',
-            function($player1) {
+            function ($player1) {
                 $player1
                     ->shouldReceive('move')
                     ->andReturn(1);
-                }
+            }
         );
 
-        $player2 = m::mock('ConnectFour\Player\PlayerInterface',
-            function($player1) {
+        $player2 = m::mock(
+            'ConnectFour\Player\PlayerInterface',
+            function ($player1) {
                 $player1
                     ->shouldReceive('move')
                     ->andReturn(2);
@@ -57,7 +58,7 @@ class GameTest extends \PHPUnit_Framework_TestCase {
     {
         $grid  = m::mock(
             'ConnectFour\Game\Grid[getRepresentation]',
-            function($grid) {
+            function ($grid) {
                 $grid->shouldReceive('getRepresentation')
                     ->andReturn(
                         [
@@ -74,7 +75,7 @@ class GameTest extends \PHPUnit_Framework_TestCase {
 
         $player1  = m::mock(
             'ConnectFour\Player\PlayerInterface',
-            function($player1) {
+            function ($player1) {
                 $player1
                     ->shouldReceive('move')
                     ->andReturn(1);
@@ -95,7 +96,7 @@ class GameTest extends \PHPUnit_Framework_TestCase {
     {
         $grid  = m::mock(
             'ConnectFour\Game\Grid[getRepresentation]',
-            function($grid) {
+            function ($grid) {
                 $grid->shouldReceive('getRepresentation')
                     ->andReturn(
                         [
@@ -112,7 +113,7 @@ class GameTest extends \PHPUnit_Framework_TestCase {
 
         $player1  = m::mock(
             'ConnectFour\Player\PlayerInterface',
-            function($player1) {
+            function ($player1) {
                 $player1
                     ->shouldReceive('move')
                     ->andReturn(1);
@@ -126,4 +127,3 @@ class GameTest extends \PHPUnit_Framework_TestCase {
 
     }
 }
- 
