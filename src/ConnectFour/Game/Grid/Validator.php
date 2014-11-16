@@ -19,6 +19,10 @@ class Validator
      */
     public static function testLine($line)
     {
+        if (count($line) < Game::COUNT_DISK_TO_WIN) {
+            return;
+        }
+
         $count = 0;
         $disk = null;
 
@@ -62,9 +66,6 @@ class Validator
         for ($i = 0; $i < count($raw[0]); $i++) {
             self::testLine(Helper::getDiagonally($raw, [0, $i], [1, 1]));
             self::testLine(Helper::getDiagonally($raw, [0, $i], [1, -1]));
-        }
-
-        for ($i = 0; $i < count($raw[0]); $i++) {
             self::testLine(Helper::getDiagonally($raw, [count($raw[0]), $i], [-1, 1]));
             self::testLine(Helper::getDiagonally($raw, [count($raw[0]), $i], [-1, -1]));
         }
@@ -72,11 +73,12 @@ class Validator
         for ($i = 0; $i < count($raw); $i++) {
             self::testLine(Helper::getDiagonally($raw, [$i, 0], [-1, 1]));
             self::testLine(Helper::getDiagonally($raw, [$i, 0], [1, 1]));
-        }
-
-        for ($i = 0; $i < count($raw); $i++) {
             self::testLine(Helper::getDiagonally($raw, [$i, count($raw)], [-1, -1]));
             self::testLine(Helper::getDiagonally($raw, [$i, count($raw)], [1, -1]));
+        }
+
+        if (Helper::isFull($raw)) {
+            throw new EndGameException('Grid is full');
         }
     }
 }
