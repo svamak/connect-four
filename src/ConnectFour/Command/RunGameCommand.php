@@ -6,6 +6,7 @@ use ConnectFour\Player\Factory\PlayerFactory;
 use ConnectFour\Game;
 use ConnectFour\Player\PlayerFinder;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -28,16 +29,34 @@ class RunGameCommand extends Command
         list($playerName1, $playerName2) = $this->enterPlayers($input, $output);
         $count = (int) $input->getOption('times');
 
-        foreach (range(0, $count) as $num) {
+        $gameResults = [
+            Game\Grid::DISK_PLAYER_1 => 0,
+            Game\Grid::DISK_PLAYER_2 => 0,
+            Game::DRAW => 0
+        ];
+
+        $output->writeln('<info>Game Progress</info>');
+        $progress = $this->getHelper('progress');
+        $progress->start($output, $count);
+        foreach (range(0, $count-1) as $num) {
             $game = new Game(
                 PlayerFactory::createPlayer($playerName1),
                 PlayerFactory::createPlayer($playerName2)
             );
 
             $winner = $game->play();
-            $output->writeln($num . ' winner ' . $winner);
-
+            $gameResults[isset($winner) ? $winner : Game::DRAW ]++;
+            $progress->advance();
         }
+        $progress->finish();
+
+        $output->writeln('<info>Game results</info>');
+
+        $table = $this->getHelper('table');
+        $table->setHeaders([$playerName1, $playerName2, Game::DRAW]);
+        $table->addRow(array_values($gameResults));
+        $table->render($output);
+
     }
 
     private function getPlayers()

@@ -3,7 +3,6 @@
 
 namespace ConnectFour\Player;
 
-use ConnectFour\Player\Factory\PlayerFactory;
 use Symfony\Component\Finder\Finder;
 
 class PlayerFinder

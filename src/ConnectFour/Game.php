@@ -17,6 +17,8 @@ class Game
      */
     const COUNT_DISK_TO_WIN = 4;
 
+    const DRAW = 'Draw';
+
     /**
      * @var PlayerInterface
      */
