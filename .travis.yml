@@ -1,20 +1,24 @@
 language: php
+
 php:
-- 5.4
+  - 5.4
+
 before_script:
-- composer install --prefer-dist
+  - composer install --prefer-dist
+
 script:
-- vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
-- vendor/bin/phpcs --standard=PSR2 src --ignore=vendor
+  - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
+  - vendor/bin/phpcs --standard=PSR2 src --ignore=vendor
 after_script:
-- wget https://scrutinizer-ci.com/ocular.phar
-- php ocular.phar code-coverage:upload --format=php-clover coverage.clover
+  - wget https://scrutinizer-ci.com/ocular.phar
+  - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
+
 notifications:
   email:
-  - dardarlt@gmail.com
+    - dardarlt@gmail.com
 env:
   global:
-  - secure: XHiAIYXyBwYPYcbluJbDJHSbsp+CrL4o8+R/0T72bYYtsjLpVqNytjDpHoBEVCROYyAIKRiQCGQG5juhkT8Yg06GvEQcYOs2/joIQyQWC9XSZTF43eTP+NeHP8qqwZMJNdMoQi3aoKbs6uumWS+I6giOwcsfygRF73w3bsJO6Tc=
+    - secure: XHiAIYXyBwYPYcbluJbDJHSbsp+CrL4o8+R/0T72bYYtsjLpVqNytjDpHoBEVCROYyAIKRiQCGQG5juhkT8Yg06GvEQcYOs2/joIQyQWC9XSZTF43eTP+NeHP8qqwZMJNdMoQi3aoKbs6uumWS+I6giOwcsfygRF73w3bsJO6Tc=
 after_success:
-  - "openssl aes-256-cbc -k '$DEPLOY_KEY' -in id_rsa_travis_enc -d -a -out config/deploy_id_rsa"
-  - "cap -T"
+    - "openssl aes-256-cbc -k '$DEPLOY_KEY' -in id_rsa_travis_enc -d -a -out config/deploy_id_rsa"
+    - "cap -T"
