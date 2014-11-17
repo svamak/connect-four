@@ -13,6 +13,45 @@ class HelperTest extends \PHPUnit_Framework_TestCase
     /**
      * @return array
      */
+    public function getTestGetColumn()
+    {
+        $out = [];
+
+        $grid1 = [
+            [0, 1, 0, 1, 1, 2, 0],
+            [0, 2, 0, 0, 2, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0]
+        ];
+
+        // case #0
+        $out[] = [
+            $grid1,
+            1,
+            [1, 2]
+        ];
+
+        return $out;
+    }
+
+    /**
+     * Test if we are able to get right row
+     *
+     * @dataProvider getTestGetColumn()
+     * @param array $grid
+     * @param int $column
+     * @param array $expected
+     */
+    public function testGetColumn($grid, $column, $expected)
+    {
+        $this->assertEquals($expected, Helper::getColumn($grid, $column));
+    }
+
+    /**
+     * @return array
+     */
     public function getTestGetRow()
     {
         $out = [];
