@@ -3,6 +3,10 @@ language: php
 php:
   - 5.4
 
+env:
+  global:
+    - secure: XHiAIYXyBwYPYcbluJbDJHSbsp+CrL4o8+R/0T72bYYtsjLpVqNytjDpHoBEVCROYyAIKRiQCGQG5juhkT8Yg06GvEQcYOs2/joIQyQWC9XSZTF43eTP+NeHP8qqwZMJNdMoQi3aoKbs6uumWS+I6giOwcsfygRF73w3bsJO6Tc=
+
 before_script:
   - composer install --prefer-dist
 
@@ -12,6 +16,9 @@ script:
 after_script:
   - wget https://scrutinizer-ci.com/ocular.phar
   - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
+after_success:
+  - "openssl aes-256-cbc -k '$DEPLOY_KEY' -in id_rsa_travis_enc -d -a -out deploy_id_rsa"
+  - "cap -T"
 
 notifications:
   email:
