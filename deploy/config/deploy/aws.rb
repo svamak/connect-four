@@ -10,5 +10,5 @@ set :branch, 'master'
 
 set :deploy_via, :remote_cache
 set :application, 'connect-four'
-set :repo_url, 'git@github.com:audriusb/connect-four.git'
+set :repo_url, 'https://github.com/audriusb/connect-four.git'
 set :deploy_to, '/var/www'
