@@ -9,6 +9,7 @@ env:
 
 before_script:
   - composer install --prefer-dist
+  - gem install capistrano --no-ri --no-rdoc
 
 script:
   - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
