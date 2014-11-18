@@ -19,7 +19,7 @@ after_script:
   - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
 after_success:
   - "openssl aes-256-cbc -k $DEPLOY_KEY -in deploy/id_rsa_travis_enc -d -a -out deploy/deploy_id_rsa"
-  - "chmod 600 deploy/id_rsa_travis_enc"
+  - "chmod 600 deploy/deploy_id_rsa"
   - "cd deploy && cap aws deploy"
 
 notifications:
