@@ -20,7 +20,6 @@ after_script:
 after_success:
   - "openssl aes-256-cbc -k $DEPLOY_KEY -in deploy/id_rsa_travis_enc -d -a -out deploy/deploy_id_rsa"
   - "chmod 600 deploy/deploy_id_rsa"
-  - "curl -sS https://getcomposer.org/installer | php"
   - "cd deploy && cap aws deploy"
 
 notifications:
