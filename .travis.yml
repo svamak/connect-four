@@ -5,7 +5,7 @@ php:
 
 env:
   global:
-    - secure: XHiAIYXyBwYPYcbluJbDJHSbsp+CrL4o8+R/0T72bYYtsjLpVqNytjDpHoBEVCROYyAIKRiQCGQG5juhkT8Yg06GvEQcYOs2/joIQyQWC9XSZTF43eTP+NeHP8qqwZMJNdMoQi3aoKbs6uumWS+I6giOwcsfygRF73w3bsJO6Tc=
+    - secure: fzibke3H3NjWA0RVrDf3ZACIOsQkCVmjtXxlBl/fR1GKAjFzeyaG9H4g5PJ4BaQ6vVcr8qUNpAGq2uBNn5f8bJ/Oy2aF4DTnvL5wl5GzHOyEBbBEyp9WPv+O4ZYnk7yT1dmO70mjmAWKjWA6wL1bi5GtimBk6ffrzt7x0glScYQ=
 
 before_script:
   - composer install --prefer-dist
