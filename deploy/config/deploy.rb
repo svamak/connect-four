@@ -1,5 +1,3 @@
-lock '3.1.0'
-
 namespace :deploy do
   desc 'Deploy to AWS server'
   after :updated, :build do
