@@ -4,7 +4,7 @@ set :ssh_options, {
     user: 'root',
     auth_methods: %w(publickey),
     forward_agent: false,
-    keys: %w{deploy/deploy_id_rsa}
+    keys: %w{deploy_id_rsa}
 }
 set :branch, 'master'
 
