@@ -1,4 +1,4 @@
-role :aws, 54.93.210.241
+role :aws, %w{root@54.93.210.241}
 
 set :ssh_options, {
     user: 'root',
