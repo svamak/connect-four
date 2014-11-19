@@ -3,7 +3,6 @@
 namespace ConnectFour\Command;
 
 use ConnectFour\Fight;
-use ConnectFour\Player\Factory\PlayerFactory;
 use ConnectFour\Game;
 use ConnectFour\Player\PlayerFinder;
 use Dardarlt\Tournaments\EventDispatcher;
@@ -11,12 +10,9 @@ use Dardarlt\Tournaments\TournamentContext;
 use Dardarlt\Tournaments\TournamentRunner;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\ProgressBar;
-use Symfony\Component\Console\Helper\Table;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Question\Question;
 
 class RunTournamentCommand extends Command
 {
@@ -66,11 +62,13 @@ class RunTournamentCommand extends Command
      */
     protected function outputPoints(OutputInterface $output, TournamentContext $tournamentResults)
     {
+        $i = 0;
         $output->writeln('<info>Player points</info>');
         foreach ($tournamentResults->getPoints() as $player => $playerPoints) {
             $output->writeln(
                 sprintf(
-                    '%s: %d',
+                    '%d. %s: %d',
+                    ++$i,
                     $player,
                     $playerPoints
                 )
