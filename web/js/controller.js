@@ -1,6 +1,6 @@
 var app = angular.module('connectFourApp', []);
 
-connectFourApp.controller('GameController', function ($scope, $http) {
+app.controller('GameController', function ($scope, $http) {
 
     $scope = {
         opponent: null,
