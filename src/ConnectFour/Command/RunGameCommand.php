@@ -64,7 +64,7 @@ class RunGameCommand extends Command
         return PlayerFinder::getAvailablePlayers();
     }
 
-    protected function creatQuestion($playerTitle)
+    protected function createQuestion($playerTitle)
     {
         $question = new Question(
             sprintf('Please select %d player name [%s]:', $playerTitle, implode(", ", $this->getPlayers()))
@@ -84,7 +84,7 @@ class RunGameCommand extends Command
         $players = [];
         $helper = $this->getHelper('question');
         foreach ([1, 2] as $title) {
-            $question = $this->creatQuestion($title);
+            $question = $this->createQuestion($title);
             $players[] = $helper->ask($input, $output, $question);
         }
 

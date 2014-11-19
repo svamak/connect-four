@@ -8,7 +8,7 @@ class SingleMovePlayer implements PlayerInterface
     /**
      * @var int
      */
-    private $nextMove;
+    private $nextMove = 0;
 
     /**
      * @param int $move

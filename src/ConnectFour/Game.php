@@ -30,7 +30,7 @@ class Game
     private $player2;
 
     /**
-     * @var Grid
+     * @var Grid|null
      */
     private $grid;
 
@@ -39,7 +39,7 @@ class Game
      * @param PlayerInterface $player2
      * @param Grid $grid
      */
-    public function __construct(PlayerInterface $player1, PlayerInterface $player2 = null, Grid $grid = null)
+    public function __construct(PlayerInterface $player1 = null, PlayerInterface $player2 = null, Grid $grid = null)
     {
         $this->grid = $grid ? $grid : new Grid();
         $this->player1 = $player1;
@@ -52,7 +52,7 @@ class Game
      */
     public function move()
     {
-        $this->grid->addDisk(
+        $this->player1 && $this->grid->addDisk(
             Grid::DISK_PLAYER_1,
             $this->player1->move($this->grid->getRepresentation(Grid::DISK_PLAYER_1))
         );
