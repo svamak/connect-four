@@ -38,7 +38,7 @@ php console run:game -t 10
 ```
 Where -t represents how many times game should be executed
 
-### Commiting your workflow
+### Commiting your work
 
 * Register/Login to http://github.com
 * Create a fork of this repository
