@@ -5,7 +5,8 @@ app.controller('GameController', function ($scope, $http) {
     $scope = {
         opponent: null,
         players: null,
-        grid: null
+        grid: null,
+        gridInverse: null
     };
 
     $http.get('service.php/players.json').success(function(data) {
@@ -26,6 +27,10 @@ app.controller('GameController', function ($scope, $http) {
 
     var loadGrid = function(data) {
         $scope.grid = data.grid;
+        $scope.gridInverse = [];
+        for (var i = data.grid.length - 1; i >= 0; i--) {
+            $scope.gridInverse.push(data.grid[i]);
+        }
     };
 
     $scope.opponentStart = function() {
