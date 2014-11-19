@@ -14,10 +14,9 @@ class TournamentContext
         $this->strategy = $strategy;
     }
 
-    public function execute()
+    public function execute($times)
     {
-         $this->strategy->run();
+        $this->strategy->run($times);
         return $this->strategy->getResults();
     }
 }
- 

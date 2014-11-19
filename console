@@ -4,8 +4,10 @@
 require_once 'vendor/autoload.php';
 
 use ConnectFour\Command\RunGameCommand;
+use ConnectFour\Command\RunTournamentCommand;
 use Symfony\Component\Console\Application;
 
 $application = new Application();
 $application->add(new RunGameCommand());
+$application->add(new RunTournamentCommand());
 $application->run();
