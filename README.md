@@ -42,7 +42,7 @@ Where -t represents how many times game should be executed
 
 * Register/Login to http://github.com
 * Create a fork of this repository
-* To commit your work simply create a Pull request
+* To commit your work: simply create a Pull request
 
 
 # Build status
