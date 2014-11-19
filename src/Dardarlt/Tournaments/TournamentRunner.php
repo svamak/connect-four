@@ -24,7 +24,7 @@ class TournamentRunner
 
         $tournament = $tournamentFactory->createTournament($tournamentType);
         $tournamentContext = new TournamentContext($tournament);
-
-        return $tournamentContext->execute($times);
+        $tournamentContext->execute($times);
+        return $tournamentContext;
     }
 }

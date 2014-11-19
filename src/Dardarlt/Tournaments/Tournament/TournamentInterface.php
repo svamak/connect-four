@@ -7,7 +7,6 @@ interface TournamentInterface
     public function run();
 
     public function getResults();
+
+    public function getPoints();
 }
-
-
- 

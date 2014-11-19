@@ -32,7 +32,7 @@ class Fight implements FightInterface
             PlayerFactory::createPlayer($playerName1),
             PlayerFactory::createPlayer($playerName2)
         );
-
+        $this->fightDispatcher->dispatch(new FightEvent($this->progress));
         return $game->play();
     }
 
