@@ -20,6 +20,10 @@ connectFourApp.controller('GameController', function ($scope, $http) {
         $scope.opponent = player;
     };
 
+    $scope.showStart =function() {
+        return !$scope.grid && $scope.opponent;
+    };
+
     var loadGrid = function(data) {
         $scope.grid = data.grid;
     };
