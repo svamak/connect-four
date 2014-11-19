@@ -12,7 +12,7 @@ Game is based on rules of Connect Four.
 
 The stone "falls down" until it reaches the bottom of the board or another stone (so it ends up immediately above an old stone or on the first row).
 
-![Game table](http://images.yourturnmyturn.com/rules/connectfour/leegbord.gif)
+![Game table](http://upload.wikimedia.org/wikipedia/commons/a/ad/Connect_Four.gif)
 
 ### Task description
 
