@@ -17,7 +17,7 @@ $app->post('/game.json', function (\Symfony\Component\HttpFoundation\Request $re
     $move = $request->get('move', null);
     $grid = $request->get('grid', null);
 
-    $opponent = \ConnectFour\Player\Factory\PlayerFactory::createPlayer($opponent);
+    $opponent = $opponent ? \ConnectFour\Player\Factory\PlayerFactory::createPlayer($opponent) : null;
     $singlePlayer = new \ConnectFour\Player\SingleMovePlayer((int)$move);
     $grid = new \ConnectFour\Game\Grid($grid);
 
