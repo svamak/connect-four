@@ -44,6 +44,9 @@ Where -t represents how many times game should be executed
 * Create a fork of this repository
 * To commit your work: simply create a Pull request
 
+### Play online
+
+http://ec2-54-93-210-241.eu-central-1.compute.amazonaws.com
 
 # Build status
 
