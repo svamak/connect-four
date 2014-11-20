@@ -29,8 +29,7 @@ class ReallyDumbPlayer implements PlayerInterface
      */
     public function move($grid)
     {
-        $available = Helper::getAvailableColumns($grid);
-        shuffle($available);
-        return array_shift($available);
+        
+        return 2;
     }
 }
