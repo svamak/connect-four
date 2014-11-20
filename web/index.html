@@ -34,9 +34,7 @@
 
         <div ng-if="grid">
             <div ng-repeat="row in gridInverse">
-                <div ng-repeat="disk in row">
-                    <span ng-click="move(index)" ng-class="checkItem(disk)"></span>
-                </div>
+                <span ng-repeat="disk in row" ng-click="move(index)" ng-class="checkItem(disk)"></span>
             </div>
         </div>
     </div>
