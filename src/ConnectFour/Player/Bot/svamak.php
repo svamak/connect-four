@@ -50,17 +50,18 @@ class svamak implements PlayerInterface
 	}
 	
 	public function bestInColumns($columns){
-	//return column index with biggest success
-		$results = [];
+		//return column index with biggest success on column
+		$bestByColumn = [];
 		$i = 0;
 		foreach($columns as $column){
-			$results [] = ["amount" => $this->goodInSingleColumn($column), "columnIndex" => $i];
+			$bestByColumn [] = ["amount" => $this->goodInSingleColumn($column), "columnIndex" => $i];
 			$i++;
 		}
 		
-		$sorted = $this->sortByKeyValue($results, "amount");
+		$bestByColumn = $this->sortByKeyValue($bestByColumn, "amount");
+		$bestByColumn = $bestByColumn[0]["columnIndex"];
 		
-		return $results[0]["columnIndex"];
+		return $bestByColumn;
 	}
 	
 	public function sortByKeyValue($data, $sortKey, $sort_flags = SORT_DESC){
@@ -74,6 +75,4 @@ class svamak implements PlayerInterface
 
 		return array_values($ordered); 
 	}
-	
-	
 }
