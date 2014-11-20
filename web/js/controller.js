@@ -26,6 +26,21 @@ app.controller('GameController', function ($scope, $http) {
         }
     };
 
+    $scope.checkItem = function(disk) {
+        var out = [
+            'glyphicon',
+            'glyphicon-unchecked'
+        ];
+
+        if (disk == 'd1') {
+            out.push('text-primary');
+        } else if (disk == 'd2') {
+            out.push('text-danger');
+        }
+
+        return out;
+    };
+
     $scope.opponentStart = function() {
         $http.post('service.php/game.json', {
             'opponent': $scope.opponent
