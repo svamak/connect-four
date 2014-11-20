@@ -20,9 +20,12 @@ app.controller('GameController', function ($scope, $http) {
 
     var loadGrid = function(data) {
         $scope.grid = data.grid;
-        $scope.gridInverse = [];
+        $scope.gridInverse = {};
         for (var i = data.grid.length - 1; i >= 0; i--) {
-            $scope.gridInverse.push(data.grid[i]);
+            $scope.gridInverse['row.' + i] = {
+                'id' : 'row.' + i,
+                'grid': data.grid[i]
+            };
         }
     };
 

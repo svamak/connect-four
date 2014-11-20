@@ -13,9 +13,12 @@ $app->get('/players.json', function () use ($app) {
 });
 
 $app->post('/game.json', function (\Symfony\Component\HttpFoundation\Request $request) use ($app) {
-    $opponent = $request->get('opponent', null);
-    $move = $request->get('move', null);
-    $grid = $request->get('grid', null);
+    $postdata = $request->getContent();
+    $request = json_decode($postdata);
+
+    $opponent = @$request->opponent;
+    $move = @$request->move;
+    $grid = @$request->grid;
 
     $opponent = $opponent ? \ConnectFour\Player\Factory\PlayerFactory::createPlayer($opponent) : null;
     $singlePlayer = new \ConnectFour\Player\SingleMovePlayer((int)$move);

@@ -18,23 +18,19 @@
         </div>
 
         <div class="row" ng-if="!grid && opponent">
-            <div class="col-xs-4">
-                <button class="btn" ng-click="opponentStart()">
+            <div class="list-group">
+                <a ng-click="playerStart()" href="#" class="list-group-item">
                     I start
-                </button>
-            </div>
-            <div class="col-xs-4">
-            </div>
-            <div class="col-xs-4" ng-click="playerStart()">
-                <button class="btn">
+                </a>
+                <a ng-click="opponentStart()" href="#" class="list-group-item">
                     Opponent starts
-                </button>
+                </a>
             </div>
         </div>
 
         <div ng-if="grid">
-            <div ng-repeat="row in gridInverse">
-                <span ng-repeat="disk in row" ng-click="move(index)" ng-class="checkItem(disk)"></span>
+            <div ng-repeat="row in gridInverse track by row.id">
+                <span style="font-size: 80px" ng-repeat="disk in row.grid track by $index" ng-click="move($index)" ng-class="checkItem(disk)"></span>
             </div>
         </div>
     </div>
