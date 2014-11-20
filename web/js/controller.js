@@ -26,8 +26,8 @@ app.controller('GameController', function ($scope, $http) {
         $scope.grid = data.grid;
         $scope.gridInverse = {};
         for (var i = data.grid.length - 1; i >= 0; i--) {
-            $scope.gridInverse['row.' + i] = {
-                'id' : 'row.' + i,
+            $scope.gridInverse['row.' + (data.grid.length - i)] = {
+                'id' : 'row.' + (data.grid.length - i),
                 'grid': data.grid[i]
             };
         }
