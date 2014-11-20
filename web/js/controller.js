@@ -2,13 +2,6 @@ var app = angular.module('connectFourApp', []);
 
 app.controller('GameController', function ($scope, $http) {
 
-    $scope = {
-        opponent: null,
-        players: null,
-        grid: null,
-        gridInverse: null
-    };
-
     $http.get('service.php/players.json').success(function(data) {
         $scope.players = data;
     });
