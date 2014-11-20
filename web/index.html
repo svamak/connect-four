@@ -17,7 +17,7 @@
             </div>
         </div>
 
-        <div class="row" ng-if="!grid && opponent">
+        <div class="row" ng-if="!grid && !message && opponent">
             <h1>Who starts?</h1>
             <div class="list-group">
                 <a ng-click="playerStart()" href="#" class="list-group-item">
@@ -29,10 +29,14 @@
             </div>
         </div>
 
-        <div ng-if="grid">
+        <div ng-if="grid && !message">
             <div ng-repeat="row in gridInverse track by row.id">
                 <span style="font-size: 80px" ng-repeat="disk in row.grid track by $index" ng-click="move($index)" ng-class="checkItem(disk)"></span>
             </div>
+        </div>
+
+        <div ng-if="message">
+            <h1>{{ message }}</h1>
         </div>
     </div>
 
