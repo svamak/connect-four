@@ -7,7 +7,7 @@ namespace ConnectFour\Player\Bot;
 use ConnectFour\Game\Grid\Helper;
 use ConnectFour\Player\PlayerInterface;
 
-class DumbPlayer implements PlayerInterface
+class mgenutis implements PlayerInterface
 {
     /**
      * Returns next move of player by given grid
