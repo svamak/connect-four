@@ -14,7 +14,7 @@ before_script:
 script:
   - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
 #  - vendor/bin/phpcs --standard=PSR2 src --ignore=vendor
-  - php console run:tournament -t 21
+  - php console run:tournament -t 45
 after_script:
   - wget https://scrutinizer-ci.com/ocular.phar
   - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
