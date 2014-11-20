@@ -36,10 +36,9 @@ class Column
      */
     public function push($disk)
     {
-        if (count($this->stack) >= $this->count) {
-            throw new \OverflowException('Column is full');
+        if (count($this->stack) < $this->count) {
+            $this->stack[] = $disk;
         }
-        $this->stack[] = $disk;
     }
 
     /**

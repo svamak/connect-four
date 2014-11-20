@@ -11,17 +11,6 @@ class ColumnTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
-     * @expectedException \OverflowException
-     */
-    public function testPushOverflow()
-    {
-        $column = new Grid\Column();
-        for ($i = 0; $i < Grid::COUNT_ROW + 1; $i++) {
-            $column->push(Grid::DISK_PLAYER_1);
-        }
-    }
-
-    /**
      * Test if we are able to get correct symbol pushed
      */
     public function testGet()
